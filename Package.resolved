@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "geometry",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mrwerdo/Geometry",
+      "state" : {
+        "branch" : "master",
+        "revision" : "dbe9f6ff77821beb29e746071d81feed084da540"
+      }
+    },
+    {
+      "identity" : "libtiff",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mdales/LibTIFF",
+      "state" : {
+        "branch" : "master",
+        "revision" : "fca10c466a794717fef2b6271c59fbacf5b40286"
+      }
+    },
+    {
+      "identity" : "swiftcli",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jakeheis/SwiftCLI",
+      "state" : {
+        "revision" : "4aef26a3edfefd46bdf71140251ec612bc685211",
+        "version" : "4.3.2"
+      }
+    }
+  ],
+  "version" : 2
+}
