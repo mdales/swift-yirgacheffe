@@ -1,11 +1,15 @@
 
-
-public struct PixelScale {
+public struct PixelScale: Equatable {
     public let x: Double
     public let y: Double
+
+    public init(x: Double, y: Double) {
+        self.x = x
+        self.y = y
+    }
 }
 
-enum AreaError: Error {
+public enum AreaError: Error {
     case InvalidDimensions
 }
 
@@ -23,5 +27,19 @@ public struct Area {
         self.top = top
         self.right = right
         self.bottom = bottom
+    }
+}
+
+public struct Window {
+    public let xoff: Int
+    public let yoff: Int
+    public let xsize: Int
+    public let ysize: Int
+
+    public init(xoff: Int, yoff: Int, xsize: Int, ysize: Int) {
+        self.xoff = xoff
+        self.yoff = yoff
+        self.xsize = xsize
+        self.ysize = ysize
     }
 }
