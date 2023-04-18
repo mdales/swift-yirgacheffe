@@ -16,7 +16,7 @@ let package = Package(
         // .package(url: "https://github.com/mdales/LibTIFF", branch: "mwd-lazy"),
         .package(path: "../LibTIFF"),
         .package(path: "../swift-graphics"),
-        .package(path: "../geopackage")
+        .package(path: "../swift.geopackage")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -26,12 +26,12 @@ let package = Package(
             dependencies: [
                 "LibTIFF",
                 .product(name: "PlatformGraphics", package: "swift-graphics"),
-                .product(name: "GeoPackage", package: "geopackage"),
+                .product(name: "GeoPackage", package: "swift.geopackage"),
                 .product(name: "CairoGraphics", package: "swift-graphics"),
             ]
         ),
         .testTarget(
-            name: "yirgacheffeTests",
+            name: "YirgacheffeTests",
             dependencies: ["Yirgacheffe"],
             resources: [
                 .copy("Resources/small_made_with_gdal.tif")
