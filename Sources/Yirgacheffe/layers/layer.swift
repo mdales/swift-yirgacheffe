@@ -8,7 +8,7 @@ public protocol Layer {
     var window: Window { get }
 
     func setAreaOfInterest(area: Area) throws -> any Layer
-    func withDataAt(region: Window, block: (UnsafeBufferPointer<T>) throws -> Void) throws
+    func withDataAt(region: Window, block: (UnsafeBufferPointer<T>, Int) throws -> Void) throws
 }
 
 

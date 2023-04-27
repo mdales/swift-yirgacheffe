@@ -121,7 +121,7 @@ public struct GeometryLayer: Layer {
 		}
 	}
 
-	public func withDataAt(region: Window, block: (UnsafeBufferPointer<UInt8>) throws -> Void) throws {
+	public func withDataAt(region: Window, block: (UnsafeBufferPointer<UInt8>, Int) throws -> Void) throws {
 		let ctx = try PlatformGraphicsContext(width: region.xsize, height: region.ysize, format: .g8)
 
 		let wkbgeometry = geometry.geometry
@@ -132,7 +132,7 @@ public struct GeometryLayer: Layer {
 				throw GeometryLayerError.UnsupportedGeometryType
 		}
 		try ctx.withUnsafeMutableBytes {
-			try block(UnsafeBufferPointer<UInt8>($0))
+			try block(UnsafeBufferPointer<UInt8>($0), $1)
 		}
 	}
 

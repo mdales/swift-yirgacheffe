@@ -120,13 +120,13 @@ public struct UniformAreaLayer<T>: Layer {
 		)
 	}
 
-	public func withDataAt(region: Window, block: (UnsafeBufferPointer<T>) throws -> Void) throws {
+	public func withDataAt(region: Window, block: (UnsafeBufferPointer<T>, Int) throws -> Void) throws {
 		// we provide just a 1 pixel wide stripe
 		let pointer = self.data.baseAddress!
 		let subset = UnsafeBufferPointer<T>(
 			start: pointer + (region.yoff + self.window.yoff),
 			count: region.ysize
 		)
-		try block(subset)
+		try block(subset, 1)
 	}
 }

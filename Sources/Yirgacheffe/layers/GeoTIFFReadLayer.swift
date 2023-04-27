@@ -106,7 +106,7 @@ public struct GeoTIFFReadLayer<T>: Layer {
 		)
 	}
 
-	public func withDataAt(region: Window, block: (UnsafeBufferPointer<T>) throws -> Void) throws {
+	public func withDataAt(region: Window, block: (UnsafeBufferPointer<T>, Int) throws -> Void) throws {
 		// for now we just
 		let imageArea = LibTIFF.Area(
 			origin: Point(x: region.xoff + self.window.xoff, y: region.yoff + self.window.yoff),
@@ -115,6 +115,6 @@ public struct GeoTIFFReadLayer<T>: Layer {
 		let data = try self.tiff.read(imageArea)
 		defer { data.deallocate() }
 
-		try block(data)
+		try block(data, region.xsize)
 	}
 }
