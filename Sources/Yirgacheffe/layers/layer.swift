@@ -28,12 +28,11 @@ public func calculateIntersection(layers: [any Layer]) throws -> Area {
     }
 
     let targetScale = layers.first!.pixelScale
-    let are_layes_same_scale = layers.reduce(true) { ($0 && ($1.pixelScale == targetScale)) }
+    let are_layes_same_scale = layers.reduce(true) { ($0 && (almost_equal(a: $1.pixelScale.x, b: targetScale.x) && almost_equal(a: $1.pixelScale.y, b: targetScale.y))) }
     guard are_layes_same_scale else {
         throw LayerError.LayersNotAtSameScale
     }
 
-    for layer in layers { print(layer.area)}
     let intersection = try Area(
         left: (layers.map{$0.area.left}).max()!,
         top: (layers.map{$0.area.top}).min()!,
